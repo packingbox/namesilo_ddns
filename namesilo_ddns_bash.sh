@@ -10,6 +10,7 @@ api_key="dfdfff3333333"
 # define domain_name and temp xml file
 domain_xml="/tmp/namesilo_response.xml"
 domain_txt="/tmp/namesilo_response.txt"
+log_path="/volume1/files/scripts/namesilo_ip_update.log"
 
 
 # check ip status
@@ -20,7 +21,6 @@ if [[ "$current_ip" = "$(cat $domain_txt)" ]]; then
     echo "same ip and wait for next check"
     exit
 else
-    echo $current_ip > $domain_txt 
     echo "ip changed and start the update"
 fi
 
@@ -71,12 +71,14 @@ history_ip=$host_ip
 # update records
 # https://www.namesilo.com/api_reference.php#dnsUpdateRecord
 dns_update_url="https://www.namesilo.com/api/dnsUpdateRecord?version=1&type=xml&key=$api_key&domain=$domain_name&rrid=$host_rrid&rrhost=$sub_domain&rrvalue=$current_ip&rrttl=3600"
-echo $dns_update_url
+#echo $dns_update_url
 
 if [[ $current_ip = $history_ip ]]; then
     echo "same ip record, no need to update"
 elif [[ $(curl -s "$dns_update_url" | grep -c "success") > 0 ]]; then
     echo "ip changed and update to $current_ip"
+    echo $current_ip > $domain_txt 
+    echo "$(date): My public IP changed to $current_ip!" >> $log_path
 else
     echo "update failed"
 fi
