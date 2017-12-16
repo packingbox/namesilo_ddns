@@ -3,9 +3,9 @@
 # change the domain name and api key with yours.
 # get api key from https://www.namesilo.com/account_api.php
 
-domain_name="myds.cloud"
+domain_name="yours.com"
 sub_domain="test"
-api_key="37271a193a9f47170fbe1"
+api_key="dfdfff3333333"
 
 # define domain_name and temp xml file
 domain_xml="/tmp/namesilo_response.xml"
