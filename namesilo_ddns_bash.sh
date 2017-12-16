@@ -68,7 +68,6 @@ dns_update_url="https://www.namesilo.com/api/dnsUpdateRecord?version=1&type=xml&
 if [[ $current_ip = $history_ip ]]; then
     echo "same ip record, no need to update"
 elif [[ $(curl -s "$dns_update_url" | grep -c "<code>300</code>") > 0 ]]; then
-    echo $(curl -s "$dns_update_url")
     echo "ip changed and update to $current_ip"
 fi
 exit 0
