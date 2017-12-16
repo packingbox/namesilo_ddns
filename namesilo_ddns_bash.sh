@@ -71,4 +71,4 @@ elif [[ $(curl -s "$dns_update_url" | grep -c "<code>300</code>") > 0 ]]; then
     echo $(curl -s "$dns_update_url")
     echo "ip changed and update to $current_ip"
 fi
-
+exit 0
