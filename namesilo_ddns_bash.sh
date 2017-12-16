@@ -12,6 +12,11 @@ domain_xml="/tmp/namesilo_response.xml"
 domain_txt="/tmp/namesilo_response.txt"
 log_path="/volume1/files/scripts/namesilo_ip_update.log"
 
+# combine domain name
+if [[ $sub_domain != "" ]];then
+    domain_name="$sub_domain.$domain_name"
+fi
+#echo $domain_name
 
 # check ip status
 # get current ip address
