@@ -21,6 +21,7 @@ on Ubuntu/Debian:
 
 ## How to use:
 * Download and save the Bash script.
+* Get your APIKEY from Namesilo control panel, https://www.namesilo.com/account_api.php
 * Modify the script, set “DOMAIN”, “HOST”, and “APIKEY” at the beginning of the script.
 * Set file permission to make it executable.
 * Create cronjob (optional)
