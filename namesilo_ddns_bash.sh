@@ -18,10 +18,10 @@ log_path="/volume1/files/scripts/namesilo_ip_update.log"
 check_ip=http://api.ipify.org
 current_ip=$(curl -s $check_ip)
 if [[ "$current_ip" = "$(cat $domain_txt)" ]]; then
-    echo "same ip and wait for next check"
+    echo "same public ip and wait for next check"
     exit
 else
-    echo "ip changed and start the update"
+    echo "public ip changed and start the update"
 fi
 
 ## define variables 
@@ -74,9 +74,9 @@ dns_update_url="https://www.namesilo.com/api/dnsUpdateRecord?version=1&type=xml&
 #echo $dns_update_url
 
 if [[ $current_ip = $history_ip ]]; then
-    echo "same ip record, no need to update"
+    echo "same domain ip record, no need to update"
 elif [[ $(curl -s "$dns_update_url" | grep -c "success") > 0 ]]; then
-    echo "ip changed and update to $current_ip"
+    echo "domain ip changed and update to $current_ip"
     echo $current_ip > $domain_txt 
     echo "$(date): My public IP changed to $current_ip!" >> $log_path
 else
