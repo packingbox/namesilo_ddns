@@ -62,7 +62,7 @@ while read_dom; do
     elif [[ $ENTITY = "host" ]]; then
         host_name=$CONTENT
         
-    elif [[ $host_type = "A" ]] && [[ $host_name = "$sub_domain.$domain_name" ]] && [[ $ENTITY = "value" ]]; then
+    elif [[ $host_type = "A" ]] && [[ $host_name = "$domain_name" ]] && [[ $ENTITY = "value" ]]; then
         host_ip="$CONTENT"
         echo "$host_rrid $host_type $host_name $host_ip " 
         break
