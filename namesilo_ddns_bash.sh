@@ -10,7 +10,7 @@ api_key="dfdfff3333333"
 # define domain_name and temp xml file
 domain_xml="/tmp/namesilo_response.xml"
 domain_txt="/tmp/namesilo_response.txt"
-log_path="/volume1/files/scripts/namesilo_ip_update.log"
+log_path="/tmp/namesilo_ip_update.log"
 
 # combine domain name
 if [[ $sub_domain != "" ]];then
